@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class HttpTestComponent implements OnInit {
 
-  someData: String = 'Harvard of Finland';
+  someData: String = 'Glassfish Server 5.0';
   imgFolder: String = 'http://media.mw.metropolia.fi/wbma/uploads/';
   imgUrl: String = 'http://10.114.34.142/articles/giphy%20(1).gif';
 
@@ -17,7 +17,7 @@ export class HttpTestComponent implements OnInit {
   getJson() {
     this.http.get('assets/package.json').subscribe((data) => {
       console.log(data);
-      this.someData = data.name;
+      this.someData = data['name'];
     });
   }
 
