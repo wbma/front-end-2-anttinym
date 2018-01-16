@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-http-test',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpTestComponent implements OnInit {
 
-  constructor() { }
+  someData: String = 'Harvard of Finland';
 
-  ngOnInit() {
+  constructor(private http: HttpClient) { }
+
+  getJson() {
+    this.http.get('assets/package.json').subscribe((data) => {
+      console.log(data);
+      this.someData = data.name;
+    });
   }
 
+
+  ngOnInit() {
+    this.getJson();
+  }
 }
