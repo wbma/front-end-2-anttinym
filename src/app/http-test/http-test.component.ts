@@ -9,6 +9,8 @@ import {HttpClient} from '@angular/common/http';
 export class HttpTestComponent implements OnInit {
 
   someData: String = 'Harvard of Finland';
+  imgFolder: String = 'http://media.mw.metropolia.fi/wbma/uploads/';
+  imgUrl: String = 'http://10.114.34.142/articles/giphy%20(1).gif';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +21,15 @@ export class HttpTestComponent implements OnInit {
     });
   }
 
+  getMedia() {
+    this.http.get('http://media.mw.metropolia.fi/wbma/media').subscribe( (data) => {
+      this.imgUrl = this.imgFolder + data[0].filename;
+      console.log(this.imgUrl);
+    });
+  }
 
   ngOnInit() {
     this.getJson();
+    this.getMedia();
   }
 }
