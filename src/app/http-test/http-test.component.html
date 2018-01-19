@@ -2,6 +2,6 @@
   {{someData}}
 </p>
 
-<p>
-  <img src="{{imgUrl}}">
+<p *ngFor="let image of imgUrl">
+  <img [src]="imgFolder + image.filename">
 </p>

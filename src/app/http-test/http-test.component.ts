@@ -10,7 +10,7 @@ export class HttpTestComponent implements OnInit {
 
   someData: String = 'Glassfish Server 5.0';
   imgFolder: String = 'http://media.mw.metropolia.fi/wbma/uploads/';
-  imgUrl: String = 'http://10.114.34.142/articles/giphy%20(1).gif';
+  imgUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class HttpTestComponent implements OnInit {
 
   getMedia() {
     this.http.get('http://media.mw.metropolia.fi/wbma/media').subscribe( (data) => {
-      this.imgUrl = this.imgFolder + data[0].filename;
+      this.imgUrl = data;
       console.log(this.imgUrl);
     });
   }
